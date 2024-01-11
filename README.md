@@ -1,6 +1,6 @@
 # Docker Wordpress Site
 
-This setup woll pull 3 images form docker hub
+This setup will pull 3 images form docker hub
 - MySQL (as website database, version 5.7)
 - PhpMyAdmin (for database management, latest version)
 - Wordpress (website builder, latest version)
@@ -12,7 +12,7 @@ This setup woll pull 3 images form docker hub
 - `git` must be installed.. ;)
 
 ### USAGE
-There is a simple Makefile which will simplify the useage..
+There is a simple Makefile which will simplify the usage..
 
 From this directory run the following:
 ``` bash
@@ -43,7 +43,7 @@ make fclean
 the `fclean` will also remove the directories created for the database and wordpress files. Any changes made to the wordpress files will be lost.
 
 ```bash
-make la
+make ls
 ``` 
 ^ this will list all the available images, running containers, volumes and custom made networks
 
@@ -54,4 +54,10 @@ make logs
 
 #### NOTE   
 Credentials and passwords for all containers are stored in the `.env` file.  
-It is highly recommended to change the values of the environment variables for more secure ones, as well as make `.env` file to be it ignored by git if used in a production environment.
+It is highly recommended to change the values of the environment variables for more secure ones, as well as make `.env` file to be ignored by git for security.
+
+After `make up` and waiting for all things to be installed and running (to check `make ls`),   
+WordPress can be accessed at `localhost:8000`  
+PhpMyAdmin is accessible at `licalhost:8080`
+
+==
