@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   # Database
@@ -40,6 +40,7 @@ services:
       - wpsite
     restart: always
 
+# Defining volume directories on the host machine
 volumes:
   db_data:
     driver: local
@@ -47,7 +48,7 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ~/Documents/WORDPRESS_SITE/mysql_data
+      device: ./mysql_data
 
   wp_data:
     driver: local
@@ -55,8 +56,9 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ~/Documents/WORDPRESS_SITE/wordpress_data
+      device: ./wordpress_data
 
+# Custom network
 networks:
   wpsite:
     driver: bridge

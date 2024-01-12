@@ -1,6 +1,10 @@
+# This Makefile is used to build and run the docker-compose.yml file
+# located in the same directory as this Makefile.
+# For more information on how to use this Makefile, please refer to
+# the README.md file located in the same directory as this Makefile.
+# Made by: github.com/svvoii
+
 # COLORS
-GREEN	= \033[0;32m
-RED		= \033[0;31m
 MAGENTA	= \033[0;35m
 RESET	= \033[0m
 
@@ -8,20 +12,20 @@ pull:
 	docker-compose pull
 
 up:
-	mkdir -p ~/Documents/WORDPRESS_SITE/wordpress_data
-	mkdir -p ~/Documents/WORDPRESS_SITE/mysql_data
+	mkdir -p ./wordpress_data
+	mkdir -p ./mysql_data
 	docker-compose up -d
 
 down:
 	docker compose down
 
-clean:
-	docker compose down --volumes
+restart: down up
 
-fclean: clean
-	sudo rm -rf ~/Documents/WORDPRESS_SITE/wordpress_data
-	sudo rm -rf ~/Documents/WORDPRESS_SITE/mysql_data
+clean_data:
+	docker compose down --volumes
 	docker system prune --all --force
+	sudo rm -rf ./wordpress_data
+	sudo rm -rf ./mysql_data
 
 ls:
 	@echo "$(MAGENTA)-> Images:$(RESET)" && docker images
